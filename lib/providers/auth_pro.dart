@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gamerconnect/View/home_screen.dart';
@@ -49,6 +50,82 @@ class AuthPro with ChangeNotifier {
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.message ?? "Something went wrong")),
+      );
+    } catch (e) {
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Unexpected error occurred")),
+      );
+    }
+  }
+
+  Future<void> resetPassword({
+    required BuildContext context,
+    required String email,
+  }) async {
+    try {
+      Helper.showLoader(context);
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      Navigator.pop(context);
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Password reset email sent! Check your inbox."),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+
+      String message = '';
+      if (e.code == 'user-not-found') {
+        message = "No user found with this email.";
+      } else if (e.code == 'invalid-email') {
+        message = "Invalid email address.";
+      } else {
+        message = e.message ?? "Something went wrong.";
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(message), backgroundColor: Colors.red),
+      );
+    }
+  }
+getProfile(){
+  
+}
+  signIn({
+    required String email,
+    required String pass,
+    required BuildContext context,
+  }) async {
+    try {
+      Helper.showLoader(context);
+
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: pass);
+
+      User? user = userCredential.user;
+
+      if (user != null) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString("uId", user.uid);
+
+        Navigator.of(context).pop();
+
+        Navigator.pushAndRemoveUntil(
+          context,
+          PageTransition(
+            child: const RootScreen(),
+            type: PageTransitionType.bottomToTop,
+          ),
+          (Route<dynamic> route) => false,
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.message ?? "Invalid email or password")),
       );
     } catch (e) {
       Navigator.of(context).pop();

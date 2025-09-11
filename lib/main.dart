@@ -4,10 +4,15 @@ import 'package:gamerconnect/View/Auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gamerconnect/providers/auth_pro.dart';
+import 'package:gamerconnect/root_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+String? uId;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  uId = prefs.getString("uId");
   await Firebase.initializeApp();
   runApp(
     MultiProvider(
@@ -25,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: AppColor.themeColor),
-      home: const LoginScreen(),
+      home: uId != null ? RootScreen() : LoginScreen(),
     );
   }
 }
