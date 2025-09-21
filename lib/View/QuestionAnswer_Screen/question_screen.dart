@@ -27,7 +27,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: media.height * 0.015),
-              SearchBarText(controller: SearchController, hintText: 'Search Question'),
+              SearchBarText(controller: SearchController, hintText: 'Search Question',onChanged: (val){},),
               SizedBox(height: media.height * 0.01),
               Text('1020 Questions', style: TextUtils.heading4),
               SizedBox(height: media.height * 0.01),

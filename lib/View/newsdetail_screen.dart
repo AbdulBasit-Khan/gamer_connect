@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gamerconnect/Models/news_model.dart';
 import 'package:gamerconnect/Utils/colors.dart';
 import 'package:gamerconnect/Utils/text_utils.dart';
+import 'package:intl/intl.dart';
 
 class NewdetailScreen extends StatefulWidget {
-  const NewdetailScreen({super.key});
+  final NewsModel model;
+  const NewdetailScreen({super.key,required this.model});
 
   @override
   State<NewdetailScreen> createState() => _NewdetailScreenState();
@@ -40,7 +43,7 @@ class _NewdetailScreenState extends State<NewdetailScreen> {
                 ),
                 Text(
                   textAlign: TextAlign.start,
-                  'Global Summit on Climate Change Historic Agreement Reached',
+                  widget.model.title,
                   style: TextUtils.titleText,
                 ),
                 SizedBox(
@@ -49,42 +52,58 @@ class _NewdetailScreenState extends State<NewdetailScreen> {
                 Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(),
-                  child: Image.asset(
-                    'assets/ts.png',
+                  child: Image.network(
+                    widget.model.imageUrl,
                     fit: BoxFit.contain,
                     width: double.infinity,
                   ),
                 ),
+                // SizedBox(
+                //   height: media.height * 0.02,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Text(
+                //       '2 hour ago',
+                //       style: TextUtils.body14,
+                //     ),
+                //     Text('By Caroline Casey', style: TextUtils.body14),
+                //   ],
+                // ),
                 SizedBox(
-                  height: media.height * 0.02,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '2 hour ago',
-                      style: TextUtils.body14,
-                    ),
-                    Text('By Caroline Casey', style: TextUtils.body14),
-                  ],
-                ),
-                SizedBox(
-                  height: media.height * 0.02,
+                  height: media.height * 0.03,
                 ),
                 Text(
-                  '''Crowds watched solemnly as the body of Rep. John Lewis crossed the Edmund Pettus Bridge one final time, 55 years after the civil rights icon marched for peace and was met with brutality in Selma, Alabama.Body bearers from the U.S. armed forces placed the late Georgia congressman and civil rights icon onto a horse-drawn caisson Sunday at the Brown Chapel African Methodist Episcopal Church. From there, the public were allowed to line up to honor Lewis for about a half-mile to the foot of the bridge .Rep. Terri Sewell, D-Al., thanked Lewis’ family during a ceremony at the chapel for sharing the congressman with the public for so many years.''',
+                  widget.model.description,
                   textAlign: TextAlign.start,
                   style: TextUtils.body16,
                 ),
                 SizedBox(
-                  height: media.height * 0.01,
+                  height: media.height * 0.03,
                 ),
-                Text(
-                  'Recommended News ',
-                  style: TextUtils.titleText,
+                
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                         Text(
+                      'Published',
+                      style: TextStyle(fontSize: 15,fontWeight:FontWeight.w500),
+                    ),
+                        Text(
+                          DateFormat('MMMM d, yyyy').format(widget.model.createdAt.toDate()),
+                          style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                    
+                  ],
                 ),
                 SizedBox(
-                  height: media.height * 0.01,
+                  height: media.height * 0.03,
                 ),
               
 ],

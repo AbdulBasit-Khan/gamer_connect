@@ -7,7 +7,7 @@ class TextUtils {
     textStyle:TextStyle(fontSize: 28 , fontWeight: FontWeight.bold , color: AppColor.black)
   );
   static TextStyle heading2 = GoogleFonts.roboto(
-    textStyle:TextStyle(fontSize: 22 , fontWeight: FontWeight.w800 , color: AppColor.black )
+    textStyle:TextStyle(fontSize: 22 , fontWeight: FontWeight.w800 , color: AppColor.whiteColor )
   );
   static TextStyle heading3 = GoogleFonts.roboto(
     textStyle:TextStyle(fontSize: 20 , fontWeight: FontWeight.w800 , color: AppColor.black)

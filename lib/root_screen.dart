@@ -38,151 +38,158 @@ class _RootScreenState extends State<RootScreen> {
     ProfileScreen(),
   ];
   final List<String> title = [
-    'Gammer Connect',
+    'Gamer Connect',
     'ChatScreen',
     'Question Screen',
     'Profile Screen',
   ];
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColor.btnColor,
-          title: Text(title[_currentIndex], style: TextUtils.heading2),
-          centerTitle: true,
-          leading: Builder(
-            builder: (context) => IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white, size: 30),
-              onPressed: () {
-                Scaffold.of(
-                  context,
-                ).openDrawer(); // Correct context for opening the drawer
-              },
+    return GestureDetector(
+      onTap: (){
+        
+      FocusScope.of(context).unfocus(); // dismisses the keyboard
+
+      },
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppColor.btnColor,
+            title: Text(title[_currentIndex], style: TextUtils.heading2),
+            centerTitle: true,
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: const Icon(Icons.menu, color: Colors.white, size: 30),
+                onPressed: () {
+                  Scaffold.of(
+                    context,
+                  ).openDrawer(); // Correct context for opening the drawer
+                },
+              ),
             ),
           ),
-        ),
-
-        drawer: Drawer(
-          backgroundColor: AppColor.themeColor,
-          child: Column(
-            children: [
-              DrawerHeader(
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(radius: 30, child: Text('1')),
-                    SizedBox(height: 10),
-                    Text(
-                      "Wasim Akram Janyaro",
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                    ),
-                    Text(
-                      "wasayojanyaro@gmail.com",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
-
-              Expanded(
-                child: ListView(
-                  children: [
-                    DrawerComponent(
-                      onTap: () {},
-                      icondata: Icons.home,
-                      iconName: 'Home',
-                    ),
-
-                    DrawerComponent(
-                      onTap: () {},
-                      icondata: Icons.home,
-                      iconName: 'News',
-                    ),
-                    DrawerComponent(
-                      onTap: () {},
-                      icondata: Icons.question_answer,
-                      iconName: 'Questions',
-                    ),
-                    DrawerComponent(
-                      onTap: () {},
-                      icondata: Icons.chat,
-                      iconName: 'ChatBot',
-                    ),
-                    DrawerComponent(
-                      onTap: () async {
-                        SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        prefs.remove("uId");
-                        Navigator.pop(context);
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          PageTransition(
-                            child: const LoginScreen(),
-                            type: PageTransitionType.bottomToTop,
-                          ),
-                          (Route<dynamic> route) => false,
-                        );
-                      },
-                      icondata: Icons.logout,
-                      iconName: 'Logout',
-                    ),
-                  ],
-                ),
-              ),
-
-              /// **Button at the Bottom**
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Reusebtn(
-                  title: 'Become a seller',
-                  ontap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const VerificationStep1(),
+      
+          drawer: Drawer(
+            backgroundColor: AppColor.themeColor,
+            child: Column(
+              children: [
+                DrawerHeader(
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(radius: 30, child: Text('1')),
+                      SizedBox(height: 10),
+                      Text(
+                        "Wasim Akram Janyaro",
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
-                    );
-                  },
+                      Text(
+                        "wasayojanyaro@gmail.com",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+      
+                Expanded(
+                  child: ListView(
+                    children: [
+                      DrawerComponent(
+                        onTap: () {},
+                        icondata: Icons.home,
+                        iconName: 'Home',
+                      ),
+      
+                      DrawerComponent(
+                        onTap: () {},
+                        icondata: Icons.home,
+                        iconName: 'News',
+                      ),
+                      DrawerComponent(
+                        onTap: () {},
+                        icondata: Icons.question_answer,
+                        iconName: 'Questions',
+                      ),
+                      DrawerComponent(
+                        onTap: () {},
+                        icondata: Icons.chat,
+                        iconName: 'ChatBot',
+                      ),
+                      DrawerComponent(
+                        onTap: () async {
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          prefs.remove("uId");
+                          Navigator.pop(context);
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            PageTransition(
+                              child: const LoginScreen(),
+                              type: PageTransitionType.bottomToTop,
+                            ),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                        icondata: Icons.logout,
+                        iconName: 'Logout',
+                      ),
+                    ],
+                  ),
+                ),
+      
+                /// **Button at the Bottom**
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Reusebtn(
+                    title: 'Become a seller',
+                    ontap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const VerificationStep1(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        body: _screen[_currentIndex],
-        bottomNavigationBar: Container(
-          decoration: const BoxDecoration(
-            border: Border(top: BorderSide(color: Colors.grey)),
-          ),
-          child: BottomNavigationBar(
-            backgroundColor: AppColor.btnColor,
-            onTap: _onItemTapped,
-            items: [
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.home),
-                label: 'Home',
-                backgroundColor: AppColor.themeColor,
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.chat),
-                label: 'Search',
-                backgroundColor: AppColor.themeColor,
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.question_answer),
-                label: 'Questions',
-                backgroundColor: AppColor.themeColor,
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.person),
-                label: 'Profile',
-                backgroundColor: AppColor.themeColor,
-              ),
-            ],
-            currentIndex: _currentIndex,
-            selectedItemColor: AppColor.btnColor,
-            unselectedItemColor: Colors.grey,
-            unselectedLabelStyle: const TextStyle(color: Colors.grey),
+          body: _screen[_currentIndex],
+          bottomNavigationBar: Container(
+            decoration: const BoxDecoration(
+              border: Border(top: BorderSide(color: Colors.grey)),
+            ),
+            child: BottomNavigationBar(
+              backgroundColor: AppColor.btnColor,
+              onTap: _onItemTapped,
+              items: [
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.home),
+                  label: 'Home',
+                  backgroundColor: AppColor.themeColor,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.chat),
+                  label: 'Search',
+                  backgroundColor: AppColor.themeColor,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.question_answer),
+                  label: 'Questions',
+                  backgroundColor: AppColor.themeColor,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.person),
+                  label: 'Profile',
+                  backgroundColor: AppColor.themeColor,
+                ),
+              ],
+              currentIndex: _currentIndex,
+              selectedItemColor: AppColor.btnColor,
+              unselectedItemColor: Colors.grey,
+              unselectedLabelStyle: const TextStyle(color: Colors.grey),
+            ),
           ),
         ),
       ),
