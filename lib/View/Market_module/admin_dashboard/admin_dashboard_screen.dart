@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:market_module/Market_module/admin_dashboard/buyer_confirmation_pannel.dart';
-import 'package:market_module/Market_module/admin_dashboard/contact_request.dart';
-import 'package:market_module/Market_module/admin_dashboard/payment_method.dart';
-import 'package:market_module/Market_module/admin_dashboard/verified_user_pannel.dart';
-
+import 'package:gamerconnect/View/Market_module/admin_dashboard/buyer_confirmation_pannel.dart';
+import 'package:gamerconnect/View/Market_module/admin_dashboard/contact_request.dart';
+import 'package:gamerconnect/View/Market_module/admin_dashboard/payment_method.dart';
+import 'package:gamerconnect/View/Market_module/admin_dashboard/verified_user_pannel.dart';
 
 class AdminDashboardScreen extends StatefulWidget {
   @override

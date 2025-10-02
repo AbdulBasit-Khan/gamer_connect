@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:market_module/Market_module/item_detail_screen.dart';
-import 'package:market_module/Market_module/seller_verification_screen.dart';
+import 'package:gamerconnect/View/Market_module/item_detail_screen.dart';
+import 'package:gamerconnect/View/Market_module/seller_verification_screen.dart';
 
 class ListedItemScreen extends StatefulWidget {
   const ListedItemScreen({super.key});

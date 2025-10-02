@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:market_module/Market_module/Listed_item_screen.dart';
-import 'package:market_module/Market_module/admin_dashboard/admin_dashboard_screen.dart';
-import 'package:market_module/Market_module/buyer_screens/buyer_history_screen.dart';
-
+import 'package:gamerconnect/View/Market_module/Listed_item_screen.dart';
+import 'package:gamerconnect/View/Market_module/admin_dashboard/admin_dashboard_screen.dart';
+import 'package:gamerconnect/View/Market_module/buyer_screens/buyer_history_screen.dart';
 class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();

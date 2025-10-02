@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market_module/Market_module/Model/order.dart';
+import 'package:gamerconnect/View/Market_module/Model/order.dart';
 
 class ClaimScreen extends StatefulWidget {
   final Order order;

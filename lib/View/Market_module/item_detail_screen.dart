@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:market_module/Market_module/payment_screen.dart';
-import 'package:market_module/Market_module/seller_contact_screen.dart';
+import 'package:gamerconnect/View/Market_module/payment_screen.dart';
+import 'package:gamerconnect/View/Market_module/seller_contact_screen.dart';
 
 class ItemDetailScreen extends StatefulWidget {
   final Map<String,String> item;

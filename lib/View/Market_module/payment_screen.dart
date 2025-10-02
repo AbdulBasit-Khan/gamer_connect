@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market_module/Market_module/admin_payment_release_screen.dart';
+import 'package:gamerconnect/View/Market_module/admin_payment_release_screen.dart';
 
 class PaymentScreen extends StatefulWidget {
   final Map<String,String> item;
