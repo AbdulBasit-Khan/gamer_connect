@@ -61,7 +61,7 @@ class _QuestionDetailState extends State<QuestionDetail> {
                       child: Center(
                         child: Text(
                           "Ask Question",
-                          style: TextUtils.body16,
+                          style:TextStyle(color:Colors.white , fontSize: 16),
                         ),
                       ),
                     ),

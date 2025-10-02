@@ -40,12 +40,12 @@ class ReuseTextForm extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(color: Colors.grey),
           borderRadius: BorderRadius.circular(8),
         ),
 
-        fillColor: Colors.grey.shade300,
-        filled: true,
+        // fillColor: Colors.grey.shade300,
+        // filled: true,
       ),
     );
   }

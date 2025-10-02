@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gamerconnect/Utils/colors.dart';
 import 'package:gamerconnect/View/Vender_Verification_Screens/add_item_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class VenderDashboard extends StatefulWidget {
   const VenderDashboard({super.key});
@@ -13,12 +15,27 @@ class _VenderDashboardState extends State<VenderDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
         centerTitle: true,
-        actions: [
+        leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+                  automaticallyImplyLeading: false,
+        backgroundColor: AppColor.btnColor,
+        title: Text(
+          'Dashboard',
+          style: GoogleFonts.roboto(
+    textStyle:TextStyle(fontSize: 20 , fontWeight: FontWeight.w800 , color: AppColor.whiteColor),
+        ),),
+                actions: [
           IconButton(onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context)=>const AddItemScreen()));
-          }, icon: const Icon(Icons.add))
+          }, icon: const Icon(Icons.add , color: Colors.white,))
         ],
       ),
       body: SingleChildScrollView(

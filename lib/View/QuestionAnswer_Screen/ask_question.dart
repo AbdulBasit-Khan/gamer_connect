@@ -3,6 +3,7 @@ import 'package:gamerconnect/Components/reuse_btn.dart';
 import 'package:gamerconnect/Components/reuse_textform.dart';
 import 'package:gamerconnect/Utils/colors.dart';
 import 'package:gamerconnect/Utils/text_utils.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AskQuestion extends StatefulWidget {
   const AskQuestion({super.key});
@@ -22,8 +23,9 @@ class _AskQuestionState extends State<AskQuestion> {
         backgroundColor: AppColor.btnColor,
         title: Text(
           'Ask Question ',
-          style: TextUtils.heading3,
-        ),
+          style: GoogleFonts.roboto(
+    textStyle:TextStyle(fontSize: 20 , fontWeight: FontWeight.w800 , color: AppColor.whiteColor),
+        ),),
         centerTitle: true,
         leading: IconButton(
             icon: const Icon(
@@ -48,7 +50,7 @@ class _AskQuestionState extends State<AskQuestion> {
                 SizedBox(height:10,),
                 Text('Be review and imaging that you are asking a question to another persons' , style: TextUtils.body14,),
                 SizedBox(height: 12,),
-                ReuseTextForm(controller: title, hinttext: "title", icondata: Icons.edit),
+                ReuseTextForm(controller: title, hinttext: "title", icondata: Icons.edit , ),
                 SizedBox(height: 12,),
                 Text('Body' , style: TextUtils.body18,),
                 SizedBox(height:10,),

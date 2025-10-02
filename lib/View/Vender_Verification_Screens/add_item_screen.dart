@@ -4,6 +4,7 @@ import 'package:gamerconnect/Components/reuse_btn.dart';
 import 'package:gamerconnect/Components/reuse_textform.dart';
 import 'package:gamerconnect/Utils/colors.dart';
 import 'package:gamerconnect/Utils/text_utils.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AddItemScreen extends StatefulWidget {
   const AddItemScreen({super.key});
@@ -21,8 +22,28 @@ class _AddItemScreenState extends State<AddItemScreen> {
     final media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Item'),
         centerTitle: true,
+        leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+                  automaticallyImplyLeading: false,
+        backgroundColor: AppColor.btnColor,
+        title: Text(
+          'Add Item',
+          style: GoogleFonts.roboto(
+    textStyle:TextStyle(fontSize: 20 , fontWeight: FontWeight.w800 , color: AppColor.whiteColor),
+        ),),
+                actions: [
+          IconButton(onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const AddItemScreen()));
+          }, icon: const Icon(Icons.add , color: Colors.white,))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -47,12 +68,12 @@ class _AddItemScreenState extends State<AddItemScreen> {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   border:OutlineInputBorder(
-                  borderSide: BorderSide.none,
+                  borderSide: BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(8)
                 ),
                 
-                fillColor: Colors.grey.shade300,
-                filled: true
+                // fillColor: Colors.grey.shade300,
+                // filled: true
           ),
             ),
             SizedBox(height: media.height * 0.02,),

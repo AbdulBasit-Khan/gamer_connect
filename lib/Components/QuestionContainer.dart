@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamerconnect/Utils/colors.dart';
 import 'package:gamerconnect/Utils/text_utils.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionContainer extends StatelessWidget {
   final VoidCallback ontap;
@@ -65,7 +66,9 @@ class QuestionContainer extends StatelessWidget {
                               color: AppColor.btnColor,
                               borderRadius: BorderRadius.circular(50)
                               ),
-                              child: Center(child: Text('12 Answers' , style: TextUtils.body14,),),
+                              child: Center(child: Text('12 Answers' , style:  GoogleFonts.roboto(
+    textStyle: TextStyle(fontSize: 14 , fontWeight: FontWeight.normal , color: AppColor.whiteColor)
+  ),),),
                             ),
                           ),
                           SizedBox(width: media.width * 0.02,),
@@ -78,7 +81,9 @@ class QuestionContainer extends StatelessWidget {
                               color: AppColor.btnColor,
                               borderRadius: BorderRadius.circular(50)
                               ),
-                              child: Center(child: Text('6 View' , style: TextUtils.body14,),),
+                              child: Center(child: Text('6 View' , style:   GoogleFonts.roboto(
+    textStyle: TextStyle(fontSize: 14 , fontWeight: FontWeight.normal , color: AppColor.whiteColor)
+  ),),),
                             ),
                           ),
                         ],
