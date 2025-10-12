@@ -23,6 +23,10 @@ class QuesAnsPro with ChangeNotifier {
           .set({
             "createdAt": FieldValue.serverTimestamp(),
             "id": time,
+            "name":
+                Provider.of<AuthPro>(context, listen: false).userData != null
+                ? Provider.of<AuthPro>(context, listen: false).userData!.name
+                : "Anonymous",
             "title": title,
             "body": body,
             "userId": uid,
@@ -44,6 +48,64 @@ class QuesAnsPro with ChangeNotifier {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text("Question Posted Successfully.")));
+    } catch (e) {
+      Navigator.pop(context);
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error Occured")));
+    }
+  }
+
+  insertAnswer({
+    required BuildContext context,
+    required String answer,
+    required int questionId,
+  }) async {
+    try {
+      Helper.showLoader(context);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String uid = prefs.getString("uId") ?? "";
+      int time = DateTime.now().millisecondsSinceEpoch;
+      await FirebaseFirestore.instance
+          .collection('answers')
+          .doc(time.toString())
+          .set({
+            "createdAt": Timestamp.now(),
+            "id": time,
+            "name":
+                Provider.of<AuthPro>(context, listen: false).userData != null
+                ? Provider.of<AuthPro>(context, listen: false).userData!.name
+                : "Anonymous",
+            "answer": answer,
+            "userId": uid,
+            "questionId": questionId,
+            "profile":
+                Provider.of<AuthPro>(context, listen: false).userData != null &&
+                    Provider.of<AuthPro>(
+                          context,
+                          listen: false,
+                        ).userData!.profile ==
+                        ""
+                ? 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+                : Provider.of<AuthPro>(
+                    context,
+                    listen: false,
+                  ).userData!.profile,
+          });
+      var data = await FirebaseFirestore.instance
+          .collection('questions')
+          .doc(questionId.toString())
+          .get();
+      int count = data.data()!['answerCount'] ?? 0;
+      await FirebaseFirestore.instance
+          .collection('questions')
+          .doc(questionId.toString())
+          .update({"answerCount": count + 1});
+      Navigator.pop(context);
+      // Navigator.pop(context);
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Answer Posted Successfully.")));
     } catch (e) {
       Navigator.pop(context);
       ScaffoldMessenger.of(

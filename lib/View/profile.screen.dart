@@ -61,18 +61,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         );
                       },
                     ),
-                    Positioned(
-                      bottom: 25,
-                      right: 90, // Adjust edit button position
-                      child: Container(
-                        padding: const EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                          color: AppColor.btnColor,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(Icons.edit, color: Colors.white),
-                      ),
-                    ),
+                    // Positioned(
+                    //   bottom: 25,
+                    //   right: 90, // Adjust edit button position
+                    //   child: Container(
+                    //     padding: const EdgeInsets.all(6),
+                    //     decoration: BoxDecoration(
+                    //       color: AppColor.btnColor,
+                    //       shape: BoxShape.circle,
+                    //     ),
+                    //     child: const Icon(Icons.edit, color: Colors.white),
+                    //   ),
+                    // ),
                   ],
                 ),
                 SizedBox(height: 60),
