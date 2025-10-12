@@ -44,7 +44,7 @@ Widget build(BuildContext context) {
           SizedBox(height: media.height * 0.01),
           SearchBarText(
             controller: SearchController,
-            hintText: 'Search Game',
+            hintText: 'Search Here',
             onChanged: (val) {
               setState(() {});
             },

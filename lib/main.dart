@@ -4,6 +4,7 @@ import 'package:gamerconnect/View/Auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gamerconnect/providers/auth_pro.dart';
+import 'package:gamerconnect/providers/ques_ans_pro.dart';
 import 'package:gamerconnect/root_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,7 +17,10 @@ void main() async {
   await Firebase.initializeApp();
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => AuthPro())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthPro()),
+        ChangeNotifierProvider(create: (_) => QuesAnsPro()),
+      ],
       child: MyApp(),
     ),
   );

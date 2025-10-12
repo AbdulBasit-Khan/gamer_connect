@@ -47,6 +47,8 @@ dependencies:
   firebase_auth: ^6.0.0
   shared_preferences: 
   cloud_firestore: ^6.0.0
+  firebase_storage: 
+  image_picker:
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -10,7 +10,9 @@ import 'package:gamerconnect/View/QuestionAnswer_Screen/question_screen.dart';
 import 'package:gamerconnect/View/Vender_Verification_Screens/verification_step1.dart';
 import 'package:gamerconnect/View/home_screen.dart';
 import 'package:gamerconnect/View/profile.screen.dart';
+import 'package:gamerconnect/providers/auth_pro.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RootScreen extends StatefulWidget {
@@ -44,12 +46,18 @@ class _RootScreenState extends State<RootScreen> {
     'Profile Screen',
   ];
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((val) {
+      Provider.of<AuthPro>(context, listen: false).getProfile();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        
-      FocusScope.of(context).unfocus(); // dismisses the keyboard
-
+      onTap: () {
+        FocusScope.of(context).unfocus(); // dismisses the keyboard
       },
       child: SafeArea(
         child: Scaffold(
@@ -68,7 +76,7 @@ class _RootScreenState extends State<RootScreen> {
               ),
             ),
           ),
-      
+
           drawer: Drawer(
             backgroundColor: AppColor.themeColor,
             child: Column(
@@ -90,7 +98,7 @@ class _RootScreenState extends State<RootScreen> {
                     ],
                   ),
                 ),
-      
+
                 Expanded(
                   child: ListView(
                     children: [
@@ -99,7 +107,7 @@ class _RootScreenState extends State<RootScreen> {
                         icondata: Icons.home,
                         iconName: 'Home',
                       ),
-      
+
                       DrawerComponent(
                         onTap: () {},
                         icondata: Icons.home,
@@ -136,7 +144,7 @@ class _RootScreenState extends State<RootScreen> {
                     ],
                   ),
                 ),
-      
+
                 /// **Button at the Bottom**
                 Padding(
                   padding: const EdgeInsets.all(16.0),
