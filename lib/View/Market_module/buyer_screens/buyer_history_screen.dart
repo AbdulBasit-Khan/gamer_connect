@@ -33,7 +33,7 @@ class BuyerHistoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('My Orders'),
-        backgroundColor: Colors.blue,
+
       ),
       body: ListView.builder(
         itemCount: orders.length,

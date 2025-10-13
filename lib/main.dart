@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gamerconnect/Utils/colors.dart';
+import 'package:gamerconnect/Utils/text_utils.dart';
 import 'package:gamerconnect/View/Auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:gamerconnect/View/Market_module/Listing%20Screens/market_module_screen.dart';
 import 'package:gamerconnect/providers/auth_pro.dart';
 import 'package:gamerconnect/providers/ques_ans_pro.dart';
 import 'package:gamerconnect/root_screen.dart';
@@ -32,9 +34,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(scaffoldBackgroundColor: AppColor.themeColor),
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: AppColor.btnColor,
+            titleTextStyle: TextUtils.heading2,
+            centerTitle: true,
+
+        ),
+        scaffoldBackgroundColor: AppColor.themeColor),
       home: uId != null ? RootScreen() : LoginScreen(),
+      // home: MarketModuleScreen(),
     );
   }
 }

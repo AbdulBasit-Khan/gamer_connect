@@ -26,6 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final statucController = TextEditingController(text: 'Seller');
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: SingleChildScrollView(

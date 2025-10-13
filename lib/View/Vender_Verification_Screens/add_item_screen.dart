@@ -55,18 +55,20 @@ class _AddItemScreenState extends State<AddItemScreen> {
             ReuseTextForm(controller: pnameController, hinttext: 'Product Name'),
             SizedBox(height: media.height * 0.02,),
             TextFormField(
+              maxLines: 6,
               style: TextStyle(color: AppColor.black),
               controller: desController,
               cursorColor: AppColor.whiteColor,
               decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                
+                  // contentPadding:
+                  //     const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   labelText: 'Description',
+                  
                   labelStyle: TextUtils.body16,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColor.black),
-                    borderRadius: BorderRadius.circular(50),
-                  ),
+                   alignLabelWithHint: true, 
+    floatingLabelAlignment: FloatingLabelAlignment.start, 
+    contentPadding: const EdgeInsets.fromLTRB(16, 20, 16, 12),
                   border:OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey),
                   borderRadius: BorderRadius.circular(8)
