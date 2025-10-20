@@ -1,40 +1,39 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class NewsModel {
-  final String imageUrl;
-  final Timestamp createdAt;
-  final String description;
-  final String id;
+  final int id;
   final String title;
+  final String description;
+  final String body;
+  final String image;
+  final DateTime publishedAt;
 
   NewsModel({
-    required this.imageUrl,
-    required this.createdAt,
-    required this.description,
     required this.id,
     required this.title,
+    required this.description,
+    required this.body,
+    required this.image,
+    required this.publishedAt,
   });
 
   factory NewsModel.fromJson(Map<String, dynamic> json) {
     return NewsModel(
-      imageUrl: json['image'] ?? '',
-      createdAt: json['createdAt'],
-      description: json['description'] ?? '',
-      id: json['id'] ?? '',
+      id: json['id'] ?? 0,
       title: json['title'] ?? '',
+      description: json['description'] ?? '',
+      body: json['body'] ?? '',
+      image: json['image'] ?? '',
+      publishedAt: DateTime.tryParse(json['published_at'] ?? '') ?? DateTime.now(),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'image': imageUrl,
-      'createdAt': {
-        'seconds': createdAt.millisecondsSinceEpoch ~/ 1000,
-        'nanoseconds': 0, // If you need nanoseconds, this could be extracted separately
-      },
-      'description': description,
       'id': id,
       'title': title,
+      'description': description,
+      'body': body,
+      'image': image,
+      'published_at': publishedAt.toIso8601String(),
     };
   }
 }
