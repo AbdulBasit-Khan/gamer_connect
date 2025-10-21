@@ -10,6 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gamerconnect/Models/user_model.dart';
 import 'package:gamerconnect/View/home_screen.dart';
 import 'package:gamerconnect/helper/helper.dart';
+import 'package:gamerconnect/main.dart';
 import 'package:gamerconnect/root_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -62,6 +63,62 @@ class AuthPro with ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.message ?? "Something went wrong")),
       );
+    } catch (e) {
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Unexpected error occurred")),
+      );
+    }
+  }
+
+  sellerSignUp({
+    required String address,
+    required String contact,
+    required String name,
+    required File cnicFront,
+    required File cnicBack,
+    required BuildContext context,
+  }) async {
+    try {
+      Helper.showLoader(context);
+      final fileName = DateTime.now().millisecondsSinceEpoch.toString();
+      final fileName1 = DateTime.now().millisecondsSinceEpoch.toString();
+      final storageRef = FirebaseStorage.instance.ref().child(
+        'uploads/$fileName.jpg',
+      );
+      final storageRef1 = FirebaseStorage.instance.ref().child(
+        'uploads/$fileName1.jpg',
+      );
+      await storageRef.putFile(cnicFront);
+      await storageRef1.putFile(cnicBack);
+      final downloadURL = await storageRef.getDownloadURL();
+      final downloadURL1 = await storageRef1.getDownloadURL();
+
+      await FirebaseFirestore.instance.collection('users').doc(uId).update({
+        'isSeller': true,
+        'approvalStatus': 0,
+        'shopContact': contact,
+        'shopAddress': address,
+        'shopName': name,
+        'cnicFront': downloadURL,
+        'cnicBack': downloadURL1,
+        'becameSellerAt': FieldValue.serverTimestamp(),
+      });
+
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Registration Successful, Waiting for approval."),
+        ),
+      );
+      // Navigator.pushAndRemoveUntil(
+      //   context,
+      //   PageTransition(
+      //     child: const RootScreen(),
+      //     type: PageTransitionType.bottomToTop,
+      //   ),
+      //   (Route<dynamic> route) => false,
+      // );
     } catch (e) {
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
