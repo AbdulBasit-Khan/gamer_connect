@@ -8,6 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gamerconnect/Models/user_model.dart';
+import 'package:gamerconnect/View/Market_module/selller_verification_pending_screen.dart';
 import 'package:gamerconnect/View/home_screen.dart';
 import 'package:gamerconnect/helper/helper.dart';
 import 'package:gamerconnect/main.dart';
@@ -93,8 +94,10 @@ class AuthPro with ChangeNotifier {
       await storageRef1.putFile(cnicBack);
       final downloadURL = await storageRef.getDownloadURL();
       final downloadURL1 = await storageRef1.getDownloadURL();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String uid = prefs.getString('uId') ?? "";
 
-      await FirebaseFirestore.instance.collection('users').doc(uId).update({
+      await FirebaseFirestore.instance.collection('users').doc(uid).update({
         'isSeller': true,
         'approvalStatus': 0,
         'shopContact': contact,
@@ -104,21 +107,17 @@ class AuthPro with ChangeNotifier {
         'cnicBack': downloadURL1,
         'becameSellerAt': FieldValue.serverTimestamp(),
       });
-
+      await getProfile();
+      Navigator.of(context).pop();
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("Registration Successful, Waiting for approval."),
         ),
       );
-      // Navigator.pushAndRemoveUntil(
-      //   context,
-      //   PageTransition(
-      //     child: const RootScreen(),
-      //     type: PageTransitionType.bottomToTop,
-      //   ),
-      //   (Route<dynamic> route) => false,
-      // );
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => SellerVerificationPending()),
+      );
     } catch (e) {
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
@@ -207,15 +206,17 @@ class AuthPro with ChangeNotifier {
       notifyListeners();
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String uid = prefs.getString('uId') ?? "";
+      log(uid);
       var data = await FirebaseFirestore.instance
           .collection('users')
           .doc(uid)
           .get();
+      log(data.data().toString());
       userData = UserModel.fromMap(data.data() ?? {});
       nameController.text = userData!.name;
       phoneController.text = userData!.phone;
       emailController.text = userData!.email;
-      log(data.data().toString());
+      // log(data.data().toString());
       isLoadingProf = false;
       notifyListeners();
     } catch (e) {

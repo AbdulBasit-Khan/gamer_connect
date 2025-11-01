@@ -8,6 +8,7 @@ import 'package:gamerconnect/View/Market_module/Listing%20Screens/market_module_
 import 'package:gamerconnect/providers/auth_pro.dart';
 import 'package:gamerconnect/providers/news_pro.dart';
 import 'package:gamerconnect/providers/ques_ans_pro.dart';
+import 'package:gamerconnect/providers/seller_product_pro.dart';
 import 'package:gamerconnect/root_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,6 +25,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => AuthPro()),
         ChangeNotifierProvider(create: (_) => QuesAnsPro()),
         ChangeNotifierProvider(create: (_) => NewsPro()),
+        ChangeNotifierProvider(create: (_) => SellerProductPro()),
       ],
       child: MyApp(),
     ),

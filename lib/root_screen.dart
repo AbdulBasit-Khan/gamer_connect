@@ -9,6 +9,8 @@ import 'package:gamerconnect/View/Auth/edit_profile_screen.dart';
 import 'package:gamerconnect/View/Market_module/admin_dashboard/admin_dashboard_screen.dart';
 import 'package:gamerconnect/View/Market_module/buyer_screens/buyer_history_screen.dart';
 import 'package:gamerconnect/View/Market_module/Listing%20Screens/market_module_screen.dart';
+import 'package:gamerconnect/View/Market_module/seller_dashboard_screen.dart';
+import 'package:gamerconnect/View/Market_module/selller_verification_pending_screen.dart';
 import 'package:gamerconnect/View/New_Screens/new_screen.dart';
 import 'package:gamerconnect/View/QuestionAnswer_Screen/question_screen.dart';
 import 'package:gamerconnect/View/Vender_Verification_Screens/verification_step1.dart';
@@ -37,11 +39,11 @@ class _RootScreenState extends State<RootScreen> {
     });
   }
 
-  final List<Widget> _screen =  [
+  final List<Widget> _screen = [
     HomeScreen(),
     NewsScreen(),
     QuestionScreen(),
-     MarketModuleScreen()
+    MarketModuleScreen(),
   ];
   final List<String> title = [
     'Gamer Connect',
@@ -99,17 +101,22 @@ class _RootScreenState extends State<RootScreen> {
               ),
             ),
             // Show cart icon only on Profile screen (4th screen - index 3)
-         actions: _currentIndex == 3 ? [
-  IconButton(
-    onPressed: () {
-      Navigator.push(
-        context, 
-        MaterialPageRoute(builder: (context) => BuyerHistoryScreen())
-      );
-    }, 
-    icon: Icon(Icons.shopping_cart, color: Colors.white),
-  )
-] : null, ),
+            actions: _currentIndex == 3
+                ? [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BuyerHistoryScreen(),
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.shopping_cart, color: Colors.white),
+                    ),
+                  ]
+                : null,
+          ),
           drawer: _buildDrawer(context),
           body: _screen[_currentIndex],
           bottomNavigationBar: Container(
@@ -227,7 +234,9 @@ class _RootScreenState extends State<RootScreen> {
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 6),
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColor.btnColor,
                           borderRadius: BorderRadius.circular(12),
@@ -302,7 +311,7 @@ class _RootScreenState extends State<RootScreen> {
                     setState(() {
                       _currentIndex = 3; // Navigate to profile screen
                     });
- // Open cart
+                    // Open cart
                   },
                   icondata: Icons.shopping_cart,
                   iconName: 'Cart',
@@ -328,23 +337,53 @@ class _RootScreenState extends State<RootScreen> {
               ],
             ),
           ),
-
-          // Become a Seller Button
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Reusebtn(
-              title: 'Become a seller',
-              ontap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const VerificationStep1(),
+          Provider.of<AuthPro>(context, listen: false).userData == null
+              ? SizedBox()
+              : Provider.of<AuthPro>(context, listen: false).userData!.isSeller!
+              ? Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Reusebtn(
+                    title: 'Seller Dashboard',
+                    ontap: () {
+                      Navigator.pop(context);
+                      if (Provider.of<AuthPro>(
+                            context,
+                            listen: false,
+                          ).userData!.approvalStatus ==
+                          0) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const SellerVerificationPending(),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SellerDashboardScreen(),
+                          ),
+                        );
+                      }
+                    },
                   ),
-                );
-              },
-            ),
-          ),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Reusebtn(
+                    title: 'Become a seller',
+                    ontap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const VerificationStep1(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
         ],
       ),
     );
