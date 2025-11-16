@@ -17,16 +17,10 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    final meida = MediaQuery.of(context).size;
-    final nameController = TextEditingController(text: 'Waseem Akram Janyaro');
-    final emailController = TextEditingController(
-      text: 'waseemjanyaro@gmail.com',
-    );
-    final phoneController = TextEditingController(text: '+92-3132773873');
-    final statucController = TextEditingController(text: 'Seller');
+   
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: SingleChildScrollView(
@@ -115,18 +109,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 20),
                   ],
                 ),
-                // SizedBox(height: meida.height * 0.02),
-                //   Text('Personal Information' , style: TextUtils.heading4,),
-                // SizedBox(height: meida.height * 0.02),
-                // ProfileText(controller: nameController, labelText: 'Name' , readOnly: false,),
-                // SizedBox(height: meida.height * 0.001,),
-                // ProfileText(controller: emailController, labelText: 'Email' , readOnly: false,),
-                // SizedBox(height: meida.height * 0.001,),
-                // ProfileText(controller: phoneController, labelText: 'Phone' , readOnly: false,),
-                // SizedBox(height: meida.height * 0.001,),
-                // ProfileText(controller: statucController, labelText: 'Status' , readOnly: false,),SizedBox(height: meida.height * 0.04,),
-                // Reusebtn(title: 'SAVE', ontap: (){}),
-                // SizedBox(height: meida.height * 0.07,),
+                
               ],
             ),
           ),

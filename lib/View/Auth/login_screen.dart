@@ -107,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   labelText: 'Password',
 
                   labelStyle: TextUtils.body16,
-                  suffixIcon: Icon(Icons.password, color: AppColor.black),
+                  suffixIcon: Icon(Icons.visibility_off, color: AppColor.black),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),

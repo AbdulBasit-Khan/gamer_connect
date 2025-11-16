@@ -25,6 +25,15 @@ class _ForgetPasswordScreenOneState extends State<ForgetPasswordScreenOne> {
     final media = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        
+        appBar:
+         AppBar(
+         leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+         }, icon: Icon(Icons.arrow_back , color: Colors.white,)),
+          title: Text('Forget Password',
+          ),
+        ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Form(
@@ -46,7 +55,7 @@ class _ForgetPasswordScreenOneState extends State<ForgetPasswordScreenOne> {
                       ),
                     ),
                     SizedBox(width: media.width * 0.03),
-                    Text('Forget Password', style: TextUtils.heading1),
+                    
                   ],
                 ),
 
