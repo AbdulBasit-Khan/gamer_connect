@@ -4,6 +4,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:gamerconnect/Components/reuse_btn.dart';
 import 'package:gamerconnect/Models/product_model.dart';
 import 'package:gamerconnect/Utils/colors.dart';
+import 'package:gamerconnect/View/payment/payment_screen.dart';
 import 'package:gamerconnect/View/Market_module/Listing%20Screens/user_communication_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -78,16 +79,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             Reusebtn(
               title: 'Buy Now',
               ontap: () async {
-                await Stripe.instance.initPaymentSheet(
-                  paymentSheetParameters: SetupPaymentSheetParameters(
-                    paymentIntentClientSecret: "s",
-                    merchantDisplayName: 'My App',
-                    // customerId: "cus_TQfZ5Xo4gKx1ah",
-                    // customerEphemeralKeySecret: 'ephemeralKey',
-                    style: ThemeMode.light, // optional
-                  ),
-                );
-                Stripe.instance.presentPaymentSheet();
+                Navigator.push(context,MaterialPageRoute( builder: (context) => CreditCardInputScreen()));
+                // await Stripe.instance.initPaymentSheet(
+                //   paymentSheetParameters: SetupPaymentSheetParameters(
+                //     paymentIntentClientSecret: "s",
+                //     merchantDisplayName: 'My App',
+                //     // customerId: "cus_TQfZ5Xo4gKx1ah",
+                //     // customerEphemeralKeySecret: 'ephemeralKey',
+                //     style: ThemeMode.light, // optional
+                //   ),
+                // );
+                // Stripe.instance.presentPaymentSheet();
               },
             ),
           ],
