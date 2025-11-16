@@ -133,8 +133,8 @@ class _RootScreenState extends State<RootScreen> {
                   backgroundColor: AppColor.themeColor,
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.chat),
-                  label: 'Search',
+                  icon: const Icon(Icons.smart_toy),
+                  label: 'Chatbot',
                   backgroundColor: AppColor.themeColor,
                 ),
                 BottomNavigationBarItem(
@@ -143,8 +143,8 @@ class _RootScreenState extends State<RootScreen> {
                   backgroundColor: AppColor.themeColor,
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.person),
-                  label: 'Profile',
+                  icon: const Icon(Icons.store),
+                  label: 'Market',
                   backgroundColor: AppColor.themeColor,
                 ),
               ],

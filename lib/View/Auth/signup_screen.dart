@@ -107,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ReuseTextForm(
                     controller: passwordcontroller,
                     hinttext: 'Password',
-                    icondata: Icons.password,
+                    icondata: Icons.visibility,
                     obscure: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -126,7 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ReuseTextForm(
                     controller: confirmpasscontroller,
                     hinttext: 'Confirm Password',
-                    icondata: Icons.password,
+                    icondata: Icons.visibility,
                     obscure: true,
 
                     validator: (value) {
