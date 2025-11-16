@@ -61,8 +61,9 @@ class _MarketModuleScreenState extends State<MarketModuleScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          ProductDetailScreen(),
+                                      builder: (context) => ProductDetailScreen(
+                                        model: pro.products[index],
+                                      ),
                                     ),
                                   );
                                 },

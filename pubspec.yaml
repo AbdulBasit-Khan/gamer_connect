@@ -39,6 +39,7 @@ dependencies:
   flutter_carousel_widget: ^3.1.0
   read_more_text: ^0.0.5
   dotted_border: ^3.1.0
+  flutter_stripe:
   firebase_core:
   intl:
   google_sign_in:
