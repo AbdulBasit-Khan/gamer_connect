@@ -24,7 +24,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     final meida = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        
         body: Consumer<AuthPro>(
           builder: (context, provider, child) => provider.isLoadingProf
               ? Center(child: CircularProgressIndicator())
@@ -156,6 +156,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               }
                             },
                           ),
+                          TextButton(onPressed: (){
+                            Navigator.pop(context);
+                          }, child: Text('Back')),
                           SizedBox(height: meida.height * 0.07),
                         ],
                       ),

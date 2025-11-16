@@ -16,6 +16,9 @@ class ProfileContentScreen extends StatelessWidget {
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(
+            leading: IconButton(onPressed: (){
+              Navigator.pop(context);
+            }, icon: Icon(Icons.arrow_back , color: Colors.white,)),
             title:Text(
                     provider.userData?.name ?? 'User Name',
                     style: const TextStyle(

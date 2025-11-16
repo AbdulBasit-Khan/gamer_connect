@@ -40,7 +40,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          shape: CircleBorder(),
+          backgroundColor: AppColor.btnColor,
+          child: Icon(Icons.add , color: Colors.white,),
           onPressed: () {
             Navigator.of(
               context,

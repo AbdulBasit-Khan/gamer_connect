@@ -115,10 +115,12 @@ class _AskQuestionState extends State<AskQuestion> {
 
                       return null;
                     },
+                    
                     cursorColor: AppColor.black,
                     keyboardType: TextInputType.text,
                     maxLines: 5,
                     decoration: InputDecoration(
+                    alignLabelWithHint: true,
                       contentPadding: const EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 20,
