@@ -39,6 +39,7 @@ dependencies:
   flutter_carousel_widget: ^3.1.0
   read_more_text: ^0.0.5
   dotted_border: ^3.1.0
+  flutter_stripe:
   firebase_core:
   intl:
   google_sign_in:
@@ -47,7 +48,6 @@ dependencies:
   firebase_auth: ^6.0.0
   shared_preferences: 
   cloud_firestore: ^6.0.0
-  flutter_credit_card:
   http:
   firebase_storage: 
   image_picker:

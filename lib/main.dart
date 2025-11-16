@@ -13,10 +13,13 @@ import 'package:gamerconnect/providers/seller_product_pro.dart';
 import 'package:gamerconnect/root_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 String? uId;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.urlScheme = 'flutterstripe';
+  await Stripe.instance.applySettings();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   uId = prefs.getString("uId");
   await Firebase.initializeApp();
