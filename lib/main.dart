@@ -19,7 +19,7 @@ String? uId;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Stripe.urlScheme = 'flutterstripe';
-  await Stripe.instance.applySettings();
+  // await Stripe.instance.applySettings();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   uId = prefs.getString("uId");
   await Firebase.initializeApp();

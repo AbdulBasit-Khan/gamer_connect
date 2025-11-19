@@ -101,21 +101,21 @@ class _RootScreenState extends State<RootScreen> {
               ),
             ),
             // Show cart icon only on Profile screen (4th screen - index 3)
-            actions: _currentIndex == 3
-                ? [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BuyerHistoryScreen(),
-                          ),
-                        );
-                      },
-                      icon: Icon(Icons.shopping_cart, color: Colors.white),
-                    ),
-                  ]
-                : null,
+            // actions: _currentIndex == 3
+            //     ? [
+            //         IconButton(
+            //           onPressed: () {
+            //             Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                 builder: (context) => BuyerHistoryScreen(),
+            //               ),
+            //             );
+            //           },
+            //           icon: Icon(Icons.shopping_cart, color: Colors.white),
+            //         ),
+            //       ]
+            //     : null,
           ),
           drawer: _buildDrawer(context),
           body: _screen[_currentIndex],

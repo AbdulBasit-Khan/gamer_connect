@@ -52,7 +52,7 @@ class _MarketModuleScreenState extends State<MarketModuleScreen> {
                                   crossAxisSpacing: 10,
                                   mainAxisSpacing: 10,
                                   childAspectRatio:
-                                      0.7, // Adjusted for better card proportion
+                                      0.9, // Adjusted for better card proportion
                                 ),
                             itemCount: pro.products.length,
                             itemBuilder: (context, index) {
@@ -123,29 +123,29 @@ class _MarketModuleScreenState extends State<MarketModuleScreen> {
                                                 color: Colors.deepPurple,
                                               ),
                                             ),
-                                            SizedBox(height: 6),
-                                            GestureDetector(
-                                              onTap: () {
-                                                print('hello word');
-                                              },
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                  color: AppColor.btnColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
-                                                ),
-                                                child: Center(
-                                                  child: Text(
-                                                    'Add to cart',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
+                                            // SizedBox(height: 6),
+                                            // GestureDetector(
+                                            //   onTap: () {
+                                            //     print('hello word');
+                                            //   },
+                                            //   child: Container(
+                                            //     width: double.infinity,
+                                            //     height: 40,
+                                            //     decoration: BoxDecoration(
+                                            //       color: AppColor.btnColor,
+                                            //       borderRadius:
+                                            //           BorderRadius.circular(6),
+                                            //     ),
+                                            //     child: Center(
+                                            //       child: Text(
+                                            //         'Add to cart',
+                                            //         style: TextStyle(
+                                            //           color: Colors.white,
+                                            //         ),
+                                            //       ),
+                                            //     ),
+                                            //   ),
+                                            // ),
                                           ],
                                         ),
                                       ),

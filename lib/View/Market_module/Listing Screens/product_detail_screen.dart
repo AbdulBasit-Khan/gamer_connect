@@ -78,16 +78,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             Reusebtn(
               title: 'Buy Now',
               ontap: () async {
-                await Stripe.instance.initPaymentSheet(
-                  paymentSheetParameters: SetupPaymentSheetParameters(
-                    paymentIntentClientSecret: "s",
-                    merchantDisplayName: 'My App',
-                    // customerId: "cus_TQfZ5Xo4gKx1ah",
-                    // customerEphemeralKeySecret: 'ephemeralKey',
-                    style: ThemeMode.light, // optional
-                  ),
-                );
-                Stripe.instance.presentPaymentSheet();
+                // await Stripe.instance.initPaymentSheet(
+                //   paymentSheetParameters: SetupPaymentSheetParameters(
+                //     paymentIntentClientSecret: "s",
+                //     merchantDisplayName: 'My App',
+                //     // customerId: "cus_TQfZ5Xo4gKx1ah",
+                //     // customerEphemeralKeySecret: 'ephemeralKey',
+                //     style: ThemeMode.light, // optional
+                //   ),
+                // );
+                // Stripe.instance.presentPaymentSheet();
               },
             ),
           ],
