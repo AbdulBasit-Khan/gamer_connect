@@ -4,6 +4,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:gamerconnect/Components/reuse_btn.dart';
 import 'package:gamerconnect/Models/product_model.dart';
 import 'package:gamerconnect/Utils/colors.dart';
+import 'package:gamerconnect/View/Market_module/payment_screen.dart';
 import 'package:gamerconnect/View/payment/payment_screen.dart';
 import 'package:gamerconnect/View/Market_module/Listing%20Screens/user_communication_screen.dart';
 
@@ -67,18 +68,25 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             // Reusebtn(
             //   title: 'Chat with seller',
             //   ontap: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => UserCommunicationScreen(),
-            //       ),
-            //     );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => UserCommunicationScreen(),
+                //   ),
+                // );
             //   },
             // ),
             SizedBox(height: 20),
             Reusebtn(
               title: 'Buy Now',
               ontap: () async {
+                //                 Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) =>PaymentScreen(item: item),
+                //   ),
+                // );
+
                 // await Stripe.instance.initPaymentSheet(
                 //   paymentSheetParameters: SetupPaymentSheetParameters(
                 //     paymentIntentClientSecret: "s",
