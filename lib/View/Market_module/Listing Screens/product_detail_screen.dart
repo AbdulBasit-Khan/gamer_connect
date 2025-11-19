@@ -4,6 +4,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:gamerconnect/Components/reuse_btn.dart';
 import 'package:gamerconnect/Models/product_model.dart';
 import 'package:gamerconnect/Utils/colors.dart';
+import 'package:gamerconnect/View/payment/payment_screen.dart';
 import 'package:gamerconnect/View/Market_module/Listing%20Screens/user_communication_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {

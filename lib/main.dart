@@ -14,6 +14,7 @@ import 'package:gamerconnect/root_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 String? uId;
 void main() async {
