@@ -51,6 +51,7 @@ dependencies:
   cloud_firestore: ^6.0.0
   http:
   firebase_storage: 
+  url_launcher: 
   image_picker:
 dev_dependencies:
   flutter_test:

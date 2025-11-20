@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gamerconnect/View/Market_module/Listing%20Screens/market_module_screen.dart';
 import 'package:gamerconnect/providers/auth_pro.dart';
+import 'package:gamerconnect/providers/chatbot_pro.dart';
 import 'package:gamerconnect/providers/news_pro.dart';
+import 'package:gamerconnect/providers/order_pro.dart';
 import 'package:gamerconnect/providers/products_pro.dart';
 import 'package:gamerconnect/providers/ques_ans_pro.dart';
 import 'package:gamerconnect/providers/seller_product_pro.dart';
@@ -28,8 +30,10 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthPro()),
+        ChangeNotifierProvider(create: (_) => OrderPro()),
         ChangeNotifierProvider(create: (_) => QuesAnsPro()),
         ChangeNotifierProvider(create: (_) => NewsPro()),
+        ChangeNotifierProvider(create: (_) => ChatbotPro()),
         ChangeNotifierProvider(create: (_) => SellerProductPro()),
         ChangeNotifierProvider(create: (_) => ProductsPro()),
       ],

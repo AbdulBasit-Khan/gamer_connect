@@ -4,7 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:gamerconnect/helper/helper.dart';
+import 'package:gamerconnect/providers/auth_pro.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SellerProductPro with ChangeNotifier {
@@ -51,6 +53,22 @@ class SellerProductPro with ChangeNotifier {
           .doc(docId.toString())
           .set({
             "name": name,
+            "sellerProfile": Provider.of<AuthPro>(
+              context,
+              listen: false,
+            ).userData!.profile,
+            "sellerContact":
+                Provider.of<AuthPro>(
+                  context,
+                  listen: false,
+                ).userData!.shopContact ??
+                "",
+            "sellerShopName":
+                Provider.of<AuthPro>(
+                  context,
+                  listen: false,
+                ).userData!.shopName ??
+                "",
             "price": price,
             "description": description,
             "category": categ,

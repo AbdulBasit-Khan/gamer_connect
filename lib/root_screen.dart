@@ -305,17 +305,17 @@ class _RootScreenState extends State<RootScreen> {
                   iconName: 'ChatBot',
                 ),
                 // Add Cart option in drawer too (optional)
-                DrawerComponent(
-                  onTap: () {
-                    Navigator.pop(context);
-                    setState(() {
-                      _currentIndex = 3; // Navigate to profile screen
-                    });
-                    // Open cart
-                  },
-                  icondata: Icons.shopping_cart,
-                  iconName: 'Cart',
-                ),
+                // DrawerComponent(
+                //   onTap: () {
+                //     Navigator.pop(context);
+                //     setState(() {
+                //       _currentIndex = 3; // Navigate to profile screen
+                //     });
+                //     // Open cart
+                //   },
+                //   icondata: Icons.shopping_cart,
+                //   iconName: 'Cart',
+                // ),
                 DrawerComponent(
                   onTap: () async {
                     SharedPreferences prefs =
@@ -337,53 +337,61 @@ class _RootScreenState extends State<RootScreen> {
               ],
             ),
           ),
-          Provider.of<AuthPro>(context, listen: false).userData == null
-              ? SizedBox()
-              : Provider.of<AuthPro>(context, listen: false).userData!.isSeller!
-              ? Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Reusebtn(
-                    title: 'Seller Dashboard',
-                    ontap: () {
-                      Navigator.pop(context);
-                      if (Provider.of<AuthPro>(
+          Consumer<AuthPro>(
+            builder: (context, pro, child) {
+              return Provider.of<AuthPro>(context, listen: false).userData ==
+                      null
+                  ? SizedBox()
+                  : Provider.of<AuthPro>(
+                      context,
+                      listen: false,
+                    ).userData!.isSeller!
+                  ? Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Reusebtn(
+                        title: 'Seller Dashboard',
+                        ontap: () {
+                          Navigator.pop(context);
+                          if (Provider.of<AuthPro>(
+                                context,
+                                listen: false,
+                              ).userData!.approvalStatus ==
+                              0) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const SellerVerificationPending(),
+                              ),
+                            );
+                          } else {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SellerDashboardScreen(),
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Reusebtn(
+                        title: 'Become a seller',
+                        ontap: () {
+                          Navigator.pop(context);
+                          Navigator.push(
                             context,
-                            listen: false,
-                          ).userData!.approvalStatus ==
-                          0) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const SellerVerificationPending(),
-                          ),
-                        );
-                      } else {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SellerDashboardScreen(),
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                )
-              : Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Reusebtn(
-                    title: 'Become a seller',
-                    ontap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const VerificationStep1(),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                            MaterialPageRoute(
+                              builder: (context) => const VerificationStep1(),
+                            ),
+                          );
+                        },
+                      ),
+                    );
+            },
+          ),
         ],
       ),
     );

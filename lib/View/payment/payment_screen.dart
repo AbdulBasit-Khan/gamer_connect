@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:gamerconnect/Models/product_model.dart';
+import 'package:gamerconnect/providers/order_pro.dart';
+import 'package:provider/provider.dart';
 
 class CreditCardInputScreen extends StatefulWidget {
-  const CreditCardInputScreen({super.key});
+  final ProductModel product;
+  final String name;
+  final String phone;
+  final String address;
+  final int count;
+  const CreditCardInputScreen({
+    super.key,
+    required this.name,
+    required this.product,
+    required this.count,
+    required this.phone,
+    required this.address,
+  });
 
   @override
   State<CreditCardInputScreen> createState() => _CreditCardInputScreenState();
@@ -20,15 +35,13 @@ class _CreditCardInputScreenState extends State<CreditCardInputScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Enter Card Details'),
-      ),
+      appBar: AppBar(title: const Text('Enter Card Details')),
       body: SafeArea(
         child: Column(
           children: [
             CreditCardWidget(
               cardNumber: cardNumber,
-              onCreditCardWidgetChange:(val){},
+              onCreditCardWidgetChange: (val) {},
               expiryDate: expiryDate,
               cardHolderName: cardHolderName,
               cvvCode: cvvCode,
@@ -81,18 +94,25 @@ class _CreditCardInputScreenState extends State<CreditCardInputScreen> {
             ElevatedButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  debugPrint('Valid Card Details');
-                  debugPrint('Card Number: $cardNumber');
-                  debugPrint('Expiry: $expiryDate');
-                  debugPrint('Holder: $cardHolderName');
-                  debugPrint('CVV: $cvvCode');
-
-                  // Now you can send card data to your backend / dummy logic
+                  if (cardNumber == "4242 4242 4242 4242") {
+                    Provider.of<OrderPro>(context, listen: false).placeOrder(
+                      name: widget.name,
+                      count: widget.count,
+                      address: widget.address,
+                      phone: widget.phone,
+                      context: context,
+                      model: widget.product,
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Please use test stripe card")),
+                    );
+                  }
                 } else {
                   debugPrint('Invalid Card Details');
                 }
               },
-              child: const Text("SUBMIT"),
+              child: const Text("Submit"),
             ),
 
             const SizedBox(height: 20),

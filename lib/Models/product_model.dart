@@ -4,6 +4,9 @@ class ProductModel {
   final String id;
   final String sellerId;
   final String name;
+  final String sellerShopName;
+  final String sellerProfile;
+  final String sellerContact;
   final String description;
   final String category;
   final double price;
@@ -14,6 +17,9 @@ class ProductModel {
     required this.id,
     required this.sellerId,
     required this.name,
+    required this.sellerShopName,
+    required this.sellerProfile,
+    required this.sellerContact,
     required this.description,
     required this.category,
     required this.price,
@@ -27,6 +33,9 @@ class ProductModel {
       id: map['id'].toString(),
       sellerId: map['sellerId'] ?? '',
       name: map['name'] ?? '',
+      sellerShopName: map['sellerShopName'] ?? '',
+      sellerContact: map['sellerContact'] ?? '',
+      sellerProfile: map['sellerProfile'] ?? '',
       description: map['description'] ?? '',
       category: map['category'] ?? '',
       price: (map['price'] is int)

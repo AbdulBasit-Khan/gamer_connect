@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gamerconnect/Components/reuse_textform.dart';
 import 'package:gamerconnect/Utils/colors.dart';
 import 'package:gamerconnect/View/Market_module/Listing%20Screens/product_detail_screen.dart';
+import 'package:gamerconnect/providers/chatbot_pro.dart';
 import 'package:gamerconnect/providers/products_pro.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +22,10 @@ class _MarketModuleScreenState extends State<MarketModuleScreen> {
         context,
         listen: false,
       ).getProducts(context: context);
+      Provider.of<ChatbotPro>(
+        context,
+        listen: false,
+      ).sendChatRequest(prompt: "Hi");
     });
     super.initState();
   }
