@@ -115,12 +115,12 @@ class _AskQuestionState extends State<AskQuestion> {
 
                       return null;
                     },
-                    
+
                     cursorColor: AppColor.black,
                     keyboardType: TextInputType.text,
                     maxLines: 5,
                     decoration: InputDecoration(
-                    alignLabelWithHint: true,
+                      alignLabelWithHint: true,
                       contentPadding: const EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 20,
@@ -143,7 +143,7 @@ class _AskQuestionState extends State<AskQuestion> {
                       filled: true,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   Reusebtn(
                     title: "Post Your Question",
                     ontap: () {

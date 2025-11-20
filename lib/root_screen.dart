@@ -277,16 +277,16 @@ class _RootScreenState extends State<RootScreen> {
                   icondata: Icons.home,
                   iconName: 'Home',
                 ),
-                DrawerComponent(
-                  onTap: () {
-                    Navigator.pop(context);
-                    setState(() {
-                      _currentIndex = 1;
-                    });
-                  },
-                  icondata: Icons.article,
-                  iconName: 'News',
-                ),
+                // DrawerComponent(
+                //   onTap: () {
+                //     Navigator.pop(context);
+                //     setState(() {
+                //       _currentIndex = 1;
+                //     });
+                //   },
+                //   icondata: Icons.article,
+                //   iconName: 'News',
+                // ),
                 DrawerComponent(
                   onTap: () {
                     Navigator.pop(context);
@@ -300,6 +300,9 @@ class _RootScreenState extends State<RootScreen> {
                 DrawerComponent(
                   onTap: () {
                     Navigator.pop(context);
+                    setState(() {
+                      _currentIndex = 1;
+                    });
                   },
                   icondata: Icons.chat,
                   iconName: 'ChatBot',

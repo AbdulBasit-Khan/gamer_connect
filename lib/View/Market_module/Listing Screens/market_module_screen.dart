@@ -90,16 +90,18 @@ class _MarketModuleScreenState extends State<MarketModuleScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       // Product Image
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(8),
-                                        ),
-                                        child: Image.network(
-                                          pro.products[index].images[0]
-                                              .toString(),
-                                          height: 140,
-                                          width: double.infinity,
-                                          fit: BoxFit.cover,
+                                      Expanded(
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(8),
+                                          ),
+                                          child: Image.network(
+                                            pro.products[index].images[0]
+                                                .toString(),
+                                            height: 140,
+                                            width: double.infinity,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
 

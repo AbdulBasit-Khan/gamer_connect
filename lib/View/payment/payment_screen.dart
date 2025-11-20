@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:gamerconnect/Models/product_model.dart';
 import 'package:gamerconnect/providers/order_pro.dart';
 import 'package:provider/provider.dart';
@@ -95,6 +96,13 @@ class _CreditCardInputScreenState extends State<CreditCardInputScreen> {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   if (cardNumber == "4242 4242 4242 4242") {
+                    final stripeMakePayment = {
+                      "cardNumber": cardNumber,
+                      "cvv": cvvCode,
+                    };
+                    final emptyPaymentSheet = SetupPaymentSheetParameters(
+                      merchantDisplayName: "Test",
+                    );
                     Provider.of<OrderPro>(context, listen: false).placeOrder(
                       name: widget.name,
                       count: widget.count,

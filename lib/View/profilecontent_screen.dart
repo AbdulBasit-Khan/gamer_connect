@@ -1,5 +1,3 @@
-
-
 // Profile Content Screen (for the profile tab)
 import 'package:flutter/material.dart';
 import 'package:gamerconnect/Utils/colors.dart';
@@ -16,18 +14,17 @@ class ProfileContentScreen extends StatelessWidget {
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(
-            leading: IconButton(onPressed: (){
-              Navigator.pop(context);
-            }, icon: Icon(Icons.arrow_back , color: Colors.white,)),
-            title:Text(
-                    provider.userData?.name ?? 'User Name',
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  centerTitle: true
-                  ,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back, color: Colors.white),
+            ),
+            title: Text(
+              provider.userData?.name ?? 'User Name',
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            centerTitle: true,
             automaticallyImplyLeading: true,
           ),
           body: Padding(
@@ -57,16 +54,13 @@ class ProfileContentScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
+
                   // User Name
-                  
                   const SizedBox(height: 8),
                   // User Email
                   Text(
                     provider.userData?.email ?? 'user@email.com',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                    ),
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                   const SizedBox(height: 40),
                   // Profile Options
@@ -82,23 +76,23 @@ class ProfileContentScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  
-                  const SizedBox(height: 20),
-                  _buildProfileOption(
-                    icon: Icons.settings,
-                    title: 'Settings',
-                    onTap: () {
-                      // Navigate to settings screen
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  _buildProfileOption(
-                    icon: Icons.help,
-                    title: 'Help & Support',
-                    onTap: () {
-                      // Navigate to help screen
-                    },
-                  ),
+
+                  // const SizedBox(height: 20),
+                  // _buildProfileOption(
+                  //   icon: Icons.settings,
+                  //   title: 'Settings',
+                  //   onTap: () {
+                  //     // Navigate to settings screen
+                  //   },
+                  // ),
+                  // const SizedBox(height: 20),
+                  // _buildProfileOption(
+                  //   icon: Icons.help,
+                  //   title: 'Help & Support',
+                  //   onTap: () {
+                  //     // Navigate to help screen
+                  //   },
+                  // ),
                 ],
               ),
             ),
@@ -109,7 +103,7 @@ class ProfileContentScreen extends StatelessWidget {
   }
 
   // Show cart dialog (you can replace this with actual cart screen)
-  
+
   Widget _buildProfileOption({
     required IconData icon,
     required String title,

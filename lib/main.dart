@@ -22,7 +22,9 @@ String? uId;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Stripe.urlScheme = 'flutterstripe';
-  // await Stripe.instance.applySettings();
+  Stripe.publishableKey =
+      "pk_test_51SQAln2ODNCelB7jx6To6wIDzSV6SmvsHsSAefQWDXr5YVdteHIEmc1YqLrmL8zVDMMPXB8sfBulBh96ekFOxsXr00lUxdUOxt";
+  await Stripe.instance.applySettings();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   uId = prefs.getString("uId");
   await Firebase.initializeApp();
