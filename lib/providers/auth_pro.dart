@@ -8,6 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gamerconnect/Models/user_model.dart';
+import 'package:gamerconnect/View/Auth/login_screen.dart';
 import 'package:gamerconnect/View/Market_module/selller_verification_pending_screen.dart';
 import 'package:gamerconnect/View/home_screen.dart';
 import 'package:gamerconnect/helper/helper.dart';
@@ -54,7 +55,7 @@ class AuthPro with ChangeNotifier {
       Navigator.pushAndRemoveUntil(
         context,
         PageTransition(
-          child: const RootScreen(),
+          child: const LoginScreen(),
           type: PageTransitionType.bottomToTop,
         ),
         (Route<dynamic> route) => false,

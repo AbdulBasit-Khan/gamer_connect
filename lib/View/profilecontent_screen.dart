@@ -82,13 +82,7 @@ class ProfileContentScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  const SizedBox(height: 20),
-                  _buildProfileOption(
-                    icon: Icons.shopping_cart, // Added cart option
-                    title: 'My Cart',
-                    onTap: () {
-                    },
-                  ),
+                  
                   const SizedBox(height: 20),
                   _buildProfileOption(
                     icon: Icons.settings,

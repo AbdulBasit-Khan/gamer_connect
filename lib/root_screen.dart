@@ -299,24 +299,13 @@ class _RootScreenState extends State<RootScreen> {
                 ),
                 DrawerComponent(
                   onTap: () {
+                    
                     Navigator.pop(context);
                   },
                   icondata: Icons.chat,
                   iconName: 'ChatBot',
                 ),
-                // Add Cart option in drawer too (optional)
-                // DrawerComponent(
-                //   onTap: () {
-                //     Navigator.pop(context);
-                //     setState(() {
-                //       _currentIndex = 3; // Navigate to profile screen
-                //     });
-                //     // Open cart
-                //   },
-                //   icondata: Icons.shopping_cart,
-                //   iconName: 'Cart',
-                // ),
-                DrawerComponent(
+            DrawerComponent(
                   onTap: () async {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
