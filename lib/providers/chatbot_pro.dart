@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:gamerconnect/Models/chatbot_response_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ChatbotPro with ChangeNotifier {
-  Future<void> sendChatRequest({required String prompt}) async {
+  Future<String> sendChatRequest({required String prompt}) async {
     const url = "https://yunwu.ai/v1/chat/completions";
     const apiKey =
         "sk-T4dt5SPhC9Kv9Yrnzi9QDQdeSQMH4WmWaRZ32ehhVvRBzK9i"; // replace with your real key
@@ -32,13 +34,13 @@ class ChatbotPro with ChangeNotifier {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         ChatCompletionResponse res = ChatCompletionResponse.fromJson(data);
-        print("Response: $data");
+        log(data.toString());
+        return res.choices[0].message.content;
       } else {
-        print("Error: ${response.statusCode}");
-        print("Body: ${response.body}");
+        return "something went wrong";
       }
     } catch (e) {
-      print("Exception: $e");
+      return "something went wrong";
     }
   }
 }

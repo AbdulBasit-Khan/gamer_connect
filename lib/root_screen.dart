@@ -41,7 +41,7 @@ class _RootScreenState extends State<RootScreen> {
 
   final List<Widget> _screen = [
     HomeScreen(),
-    NewsScreen(),
+    ChatbotScreen(),
     QuestionScreen(),
     MarketModuleScreen(),
   ];
@@ -299,13 +299,12 @@ class _RootScreenState extends State<RootScreen> {
                 ),
                 DrawerComponent(
                   onTap: () {
-                    
                     Navigator.pop(context);
                   },
                   icondata: Icons.chat,
                   iconName: 'ChatBot',
                 ),
-            DrawerComponent(
+                DrawerComponent(
                   onTap: () async {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
