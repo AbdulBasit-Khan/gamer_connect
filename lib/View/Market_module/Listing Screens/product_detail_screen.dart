@@ -73,7 +73,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
         ),
       ),
-      appBar: AppBar(title: Text('Product detail')),
+      appBar: AppBar(title: Text('Product detail') , leading: IconButton(onPressed: (){
+        Navigator.pop(context);
+      }, icon: Icon(Icons.arrow_back , color: Colors.white,)),),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(

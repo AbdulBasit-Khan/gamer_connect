@@ -57,7 +57,7 @@ class _MarketModuleScreenState extends State<MarketModuleScreen> {
                                   crossAxisSpacing: 10,
                                   mainAxisSpacing: 10,
                                   childAspectRatio:
-                                      0.9, // Adjusted for better card proportion
+                                      0.8, // Adjusted for better card proportion
                                 ),
                             itemCount: pro.products.length,
                             itemBuilder: (context, index) {
@@ -73,6 +73,7 @@ class _MarketModuleScreenState extends State<MarketModuleScreen> {
                                   );
                                 },
                                 child: Container(
+                                  height: 450,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(8),
